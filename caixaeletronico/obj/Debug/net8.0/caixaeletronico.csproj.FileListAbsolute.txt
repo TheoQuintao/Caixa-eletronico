@@ -1,0 +1,15 @@
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\bin\Debug\net8.0\caixaeletronico.exe
+C:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\bin\Debug\net8.0\caixaeletronico.deps.json
+C:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\bin\Debug\net8.0\caixaeletronico.runtimeconfig.json
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\bin\Debug\net8.0\caixaeletronico.dll
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\bin\Debug\net8.0\caixaeletronico.pdb
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.AssemblyInfoInputs.cache
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.AssemblyInfo.cs
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.csproj.CoreCompileInputs.cache
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.sourcelink.json
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.dll
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\refint\caixaeletronico.dll
+c:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.pdb
+C:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\caixaeletronico.genruntimeconfig.cache
+C:\Users\Alunos\OneDrive\Documentos\GitTheo\Caixa-eletronico\caixaeletronico\obj\Debug\net8.0\ref\caixaeletronico.dll
