@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("caixaeletronico")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a08c668bdd1de2407efb24059da1b5810d93591f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89815e5081c906c853fe8a33c98d5593831265e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("caixaeletronico")]
 [assembly: System.Reflection.AssemblyTitleAttribute("caixaeletronico")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

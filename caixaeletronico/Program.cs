@@ -4,30 +4,20 @@ using System.Collections.Generic;
 
 class Program
 {
-    public static void Main()
-    {
-        Console.Clear();
-        HashSet<string> Usuarios = new HashSet<string>();
-        HashSet<int> Contas = new HashSet<int>();
-
-        string cpf = "";
-        
-        Sigin(Contas,Usuarios,cpf);
-    }
-    public static void Sigin(HashSet<int> Contas,HashSet<string> Usuarios, string cpf)
+    public static void Sigin(HashSet<int> Contas, HashSet<string> Usuarios, string cpf)
     {
         Random rnd = new Random();
-        parauser:
+    parauser:
         Console.Write("Número do CPF: ");
         cpf = Console.ReadLine() ?? "";
-        if(Validarcpf(cpf) == false)
+        if (Validarcpf(cpf) == false)
         {
             Console.Clear();
             goto parauser;
         }
         else
         {
-            if(!Usuarios.Add(cpf))
+            if (!Usuarios.Add(cpf))
             {
                 Console.WriteLine("CPF já cadastrado!!!");
                 Thread.Sleep(3000);
@@ -36,9 +26,9 @@ class Program
             }
             else
             {
-                addconta:
-                int conta = rnd.Next(100000,999999);
-                if(!Contas.Add(conta))
+            addconta:
+                int conta = rnd.Next(100000, 999999);
+                if (!Contas.Add(conta))
                 {
                     goto addconta;
                 }
@@ -91,8 +81,64 @@ class Program
 
         return cpf.EndsWith(digito);
     }
-    public static void Login(HashSet<int> Contas, HashSet<string> Usuarios)
+    public static void Login(int logado, HashSet<int> Contas, HashSet<string> Usuarios)
     {
-        
+        List<string> usurioslogin = Usuarios.ToList();
+        List<int> contaslogin = Contas.ToList();
+
+        Console.Write("CPF: ");
+        string cpflogin = Console.ReadLine().Replace(".", "").Replace("-", "");
+        if (Usuarios.Add(cpflogin))
+        {
+            Console.WriteLine("CPF não cadastrado");
+            Usuarios.Remove(cpflogin);
+            Thread.Sleep(3000);
+            Console.Clear();
+            return;
+        }
+        else
+        {
+        cl:
+            Console.Write("Conta: ");
+            if (!int.TryParse(Console.ReadLine(), out int conta))
+                goto cl;
+            else
+            {
+                foreach (string valido in usurioslogin)
+                {
+                    int i = 0;
+                    if (valido == cpflogin)
+                    {
+                        if (conta == contaslogin[i])
+                        {
+                            Console.WriteLine("Logado");
+                            logado = 1;
+                        }
+                    }
+                    else
+                        i++;
+                }
+            }
+        }
+
+    }
+    public static void Main()
+    {
+        Console.WriteLine("Estou aqui1");
+        Console.Clear();
+        HashSet<string> Usuarios = new HashSet<string>();
+        HashSet<int> Contas = new HashSet<int>();
+        Console.WriteLine("Estou aqui2");
+        string cpf = "";
+        int logado = 0;
+        Sigin(Contas, Usuarios, cpf);
+        Login(logado, Contas, Usuarios);
+        Console.WriteLine("Estou aqui3");
+        if (logado == 1)
+        {
+            Console.WriteLine("Você está logado");
+        }
+        else if (logado == 0)
+            Console.WriteLine("estou aqui4");
     }
 }
