@@ -12,7 +12,7 @@ class Program
         HashSet<string> usuarios = new HashSet<string>();
         HashSet<int> contas = new HashSet<int>();
         List<float> saldos = new List<float>();
-        
+
         int conta = 0;
 
         float valordosaque = 0,
@@ -118,7 +118,7 @@ class Program
     public static bool LogIn(ref int conta,HashSet<int> contas, HashSet<string> usuarios,List<float> saldos)
     {
         Console.Write("CPF: ");
-        string cpf = Console.ReadLine().Replace(".", "").Replace("-", "").Trim();
+        string cpf = Console.ReadLine()?.Replace(".", "")?.Replace("-", "")?.Trim() ?? "";
 
         if (!usuarios.Contains(cpf))
         {
