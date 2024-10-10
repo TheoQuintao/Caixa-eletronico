@@ -11,18 +11,37 @@ class Program
         Console.Clear();
         HashSet<string> usuarios = new HashSet<string>();
         HashSet<int> contas = new HashSet<int>();
-        List<int> saldos = new List<int>();
-        int saldo = 1001;
-        saldos.Add(saldo);
+        List<float> saldos = new List<float>();
+        
         int conta = 0;
-        int valordosaque = 0;
-        SigIn(contas,usuarios);
-        LogIn(ref conta,contas,usuarios);
-        Console.WriteLine(conta);
-        Saque(500,conta,saldos,contas);
-        Console.WriteLine(saldos[0]);
+
+        float valordosaque = 0,
+            valordodeposito = 0;
+        
+        while(true)
+        {
+            Console.WriteLine("(1)Sou cliente\n(2)Desejo criar uma conta\n(3)Sair\n");
+            ConsoleKeyInfo loginmenu = Console.ReadKey();
+            switch(loginmenu.KeyChar)
+            {
+                case '1':
+                    if(LogIn(ref conta,contas,usuarios,saldos)==true)
+                    {
+                        Console.Clear();
+                        Menu(valordodeposito,valordosaque,ref conta,saldos,contas,usuarios);
+                    }
+                break;
+                case '2':
+                    Console.Clear();
+                    SigIn(contas,usuarios,saldos);
+                break;
+                case '3':
+                return;
+            } 
+        }
+        
     }
-    public static void SigIn(HashSet<int> contas, HashSet<string> usuarios)
+    public static void SigIn(HashSet<int> contas, HashSet<string> usuarios,List<float> saldos)
     {
         Random rnd = new Random();
         string cpf;
@@ -42,13 +61,17 @@ class Program
                 }
                 else
                 {
+                    float saldo;
                     int conta;
                     do
                     {
                         conta = rnd.Next(100000, 999999);
                     } while (!contas.Add(conta));
+                    saldo = 0;
+                    saldos.Add(saldo);
 
-                    Console.WriteLine($"O número da sua conta é: {conta}");
+                    Console.WriteLine($"O número da sua conta é: {conta}\n");
+                    Thread.Sleep(5000);
                     break;
                 }
             }
@@ -56,7 +79,6 @@ class Program
                 Console.Clear();
         }
     }
-
     public static bool ValidarCpf(string cpf)
     {
         int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -89,8 +111,7 @@ class Program
 
         return cpf.EndsWith(tempCpf.Substring(9));
     }
-
-    public static bool LogIn(ref int conta,HashSet<int> contas, HashSet<string> usuarios)
+    public static bool LogIn(ref int conta,HashSet<int> contas, HashSet<string> usuarios,List<float> saldos)
     {
         Console.Write("CPF: ");
         string cpf = Console.ReadLine().Replace(".", "").Replace("-", "").Trim();
@@ -100,7 +121,18 @@ class Program
             Console.WriteLine("CPF não cadastrado");
             Thread.Sleep(3000);
             Console.Clear();
-            return false;
+            Console.WriteLine("Fazer registro?\n\n(1)Sim\n(2)Não\n");
+            ConsoleKeyInfo fazerregistro = Console.ReadKey();
+            switch(fazerregistro.KeyChar)
+            {
+                case '1':
+                    Console.Clear();
+                    SigIn(contas,usuarios,saldos);
+                break;
+                case '2':
+                Console.Clear();
+                return false;
+            }            
         }
 
         
@@ -110,17 +142,75 @@ class Program
         else   
             return false;   
     }
-    public static void Saque(int valordosaque,int conta,List<int> saldos, HashSet<int> contas)
+    public static void Saque(float valordosaque,ref int conta,List<float> saldos, HashSet<int> contas)
     {
+        int j = 0;
         foreach(int i in contas)
         {
-            int j = 0;
+            j++;
             if(i == conta)
             {
-                saldos[j] -= valordosaque;
+                saldos[j-1] -= valordosaque;
                 break;
             }
+        }
+    }
+    public static void Deposito(float valordodeposito,ref int conta,List<float> saldos, HashSet<int> contas)
+    {   
+        int j = 0;
+        foreach(int i in contas)
+        {
             j++;
+            if(i == conta)
+            {
+                saldos[j-1] += valordodeposito;
+                break;
+            }
+        }
+    }
+    public static void Menu(float valordodeposito, float valordosaque,ref int conta,List<float> saldos, HashSet<int> contas,HashSet<string> usuarios)
+    {
+        while(true)
+        {
+            Console.WriteLine($"Conta: {conta}\n");
+            int j = 0;
+            foreach(int i in contas)
+            {
+                j++;
+                if(i == conta)
+                {
+                    Console.WriteLine($"Saldo: R${saldos[j-1]:F2}\n");
+                }
+            }
+            Console.WriteLine("(1)Deposito\n(2)Saque\n(3)Transferencia\n(4)Sair");
+            ConsoleKeyInfo keymenu = Console.ReadKey();
+            switch(keymenu.KeyChar)
+            {
+                case '1':
+                    Console.Clear();
+                    vd:
+                    Console.Write("Valor do deposito: ");
+                    if(!float.TryParse(Console.ReadLine(),out valordodeposito))
+                        goto vd;
+                    Console.Clear();
+                    Deposito(valordodeposito,ref conta,saldos,contas);
+                break;
+                case '2':
+                    Console.Clear();
+                    vs:
+                    Console.Write("Valor do saque: ");
+                    if(!float.TryParse(Console.ReadLine(),out valordosaque))
+                        goto vs;
+                    Console.Clear();
+                    Saque(valordosaque,ref conta,saldos,contas);
+                break;
+                case '3':
+
+                break;
+                case '4':
+                Console.Clear();
+                return;
+            }
         }
     }
 }
