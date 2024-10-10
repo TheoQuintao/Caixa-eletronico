@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alunos\\OneDrive\\Documentos\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj": {}
+    "D:\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alunos\\OneDrive\\Documentos\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj": {
+    "D:\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alunos\\OneDrive\\Documentos\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj",
+        "projectUniqueName": "D:\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj",
         "projectName": "caixaeletronico",
-        "projectPath": "C:\\Users\\Alunos\\OneDrive\\Documentos\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj",
-        "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alunos\\OneDrive\\Documentos\\GitTheo\\Caixa-eletronico\\caixaeletronico\\obj\\",
+        "projectPath": "D:\\GitTheo\\Caixa-eletronico\\caixaeletronico\\caixaeletronico.csproj",
+        "packagesPath": "C:\\Users\\theoo\\.nuget\\packages\\",
+        "outputPath": "D:\\GitTheo\\Caixa-eletronico\\caixaeletronico\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\theoo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
