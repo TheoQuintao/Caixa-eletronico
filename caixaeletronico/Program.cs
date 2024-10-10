@@ -25,6 +25,7 @@ class Program
             switch(loginmenu.KeyChar)
             {
                 case '1':
+                    Console.Clear();
                     if(LogIn(ref conta,contas,usuarios,saldos)==true)
                     {
                         Console.Clear();
@@ -36,6 +37,7 @@ class Program
                     SigIn(contas,usuarios,saldos);
                 break;
                 case '3':
+                    Console.Clear();
                 return;
             } 
         }
@@ -65,13 +67,15 @@ class Program
                     int conta;
                     do
                     {
-                        conta = rnd.Next(100000, 999999);
+                        conta = rnd.Next(1000, 9999);
                     } while (!contas.Add(conta));
                     saldo = 0;
                     saldos.Add(saldo);
 
                     Console.WriteLine($"O número da sua conta é: {conta}\n");
-                    Thread.Sleep(5000);
+                    Console.WriteLine("Decore esse número!!!");
+                    Thread.Sleep(10000);
+                    Console.Clear();
                     break;
                 }
             }
@@ -178,9 +182,7 @@ class Program
             {
                 j++;
                 if(i == conta)
-                {
                     Console.WriteLine($"Saldo: R${saldos[j-1]:F2}\n");
-                }
             }
             Console.WriteLine("(1)Deposito\n(2)Saque\n(3)Transferencia\n(4)Sair");
             ConsoleKeyInfo keymenu = Console.ReadKey();
@@ -205,11 +207,42 @@ class Program
                     Saque(valordosaque,ref conta,saldos,contas);
                 break;
                 case '3':
-
+                    Console.Clear();
+                    Transferencia(conta,contas,saldos);
                 break;
                 case '4':
                 Console.Clear();
                 return;
+            }
+        }
+    }
+    public static void Transferencia(int conta, HashSet<int> contas,List<float> saldos)
+    {
+        ct:
+        Console.Write("Número da conta para a transferencia: ");
+        if(!int.TryParse(Console.ReadLine(),out int contatrans))
+            goto ct;
+        vt:
+        Console.Write("Valor da transferencia: ");
+        if(!int.TryParse(Console.ReadLine(),out int valortrans))
+            goto vt;
+        int j = 0;
+        foreach(int i in contas)
+        {
+            j++;
+            if(i == contatrans)
+            {
+                saldos[j-1] += valortrans;
+            }
+        }
+        int k = 0;
+        foreach(int i in contas)
+        {
+            k++;
+            if(i == conta)
+            {
+                saldos[k-1] -= valortrans;
+                break;
             }
         }
     }
