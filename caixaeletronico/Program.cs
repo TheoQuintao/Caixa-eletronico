@@ -184,7 +184,7 @@ class Program
                 if(i == conta)
                     Console.WriteLine($"Saldo: R${saldos[j-1]:F2}\n");
             }
-            Console.WriteLine("(1)Deposito\n(2)Saque\n(3)Transferencia\n(4)Sair");
+            Console.WriteLine("(1)Deposito\n(2)Saque\n(3)Transferencia\n(4)Voltar");
             ConsoleKeyInfo keymenu = Console.ReadKey();
             switch(keymenu.KeyChar)
             {
@@ -222,28 +222,42 @@ class Program
         Console.Write("Número da conta para a transferencia: ");
         if(!int.TryParse(Console.ReadLine(),out int contatrans))
             goto ct;
-        vt:
-        Console.Write("Valor da transferencia: ");
-        if(!int.TryParse(Console.ReadLine(),out int valortrans))
-            goto vt;
-        int j = 0;
+       
+        
         foreach(int i in contas)
         {
-            j++;
-            if(i == contatrans)
+            if(i==contatrans)
             {
-                saldos[j-1] += valortrans;
+                 vt:
+                Console.Write("Valor da transferencia: ");
+                if(!int.TryParse(Console.ReadLine(),out int valortrans))
+                goto vt;
+
+                int j = 0;
+                foreach(int l in contas)
+                {
+                    j++;
+                    if(l == contatrans)
+                    {
+                        saldos[j-1] += valortrans;
+                    }
+                }
+                int k = 0;
+                foreach(int l in contas)
+                {
+                    k++;
+                    if(l == conta)
+                    {
+                        saldos[k-1] -= valortrans;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                goto ct;
             }
         }
-        int k = 0;
-        foreach(int i in contas)
-        {
-            k++;
-            if(i == conta)
-            {
-                saldos[k-1] -= valortrans;
-                break;
-            }
-        }
+        
     }
 }
